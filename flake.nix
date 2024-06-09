@@ -27,8 +27,9 @@
         };
 
       in {
-        devShells.default =
-          rustpkgs.workspaceShell { packages = [ pkgs.just ]; };
+        devShells.default = rustpkgs.workspaceShell {
+          packages = [ cargo2nix.packages.${system}.cargo2nix ];
+        };
         packages.default = rustpkgs.workspace.breakout { };
       });
 }
